@@ -10,11 +10,13 @@ import pygame as pg
 import random 
 import math
 
-def drawCircle(surface, color, position, radius): 
-    
-    pg.draw.circle(surface, color, position, radius)
-    
 
+    
+def drawCircle(surface, color, position, radius, 
+               border_color=(0,0,0), border_size=0): 
+    
+    pg.draw.circle(surface, border_color, position, radius + border_size)
+    pg.draw.circle(surface, color, position, radius)
 
     
 
@@ -25,6 +27,9 @@ class Snake():
         self.pos = (200,200)
         self.show =True
         self.color = (0,0,0)
+        self.radius = 10
+        self.border_color = (255,255,255)
+        self.border_size = 2
         
     def find_pos(self):
         
@@ -37,8 +42,12 @@ class Snake():
         
         # print(self.pos)
         
+
+        
         
     def run(self):
-        drawCircle(self.surface, self.color, self.pos, 10)
+        drawCircle(self.surface, self.color, self.pos, self.radius, 
+                   border_color = self.border_color,
+                   border_size = self.border_size)
         
         
