@@ -25,8 +25,8 @@ window.fill(tan)
 
 
 
-
 snake1 = Snake(window)
+snake2 = Snake(window)
 
 
 
@@ -36,19 +36,21 @@ while running == True:
     
     pg.display.flip()
     
+    snake1.run()
+    snake2.run()
+    
     for event in pg.event.get():
         
         if event.type == pg.QUIT:
-            
             running = False
             
         if event.type == pg.MOUSEBUTTONDOWN:
+            snake1.go()
             
-            
-            snake1.run()
-            snake1.find_pos()
-            
-            
+        if event.type == pg.KEYDOWN:
+            if event.key == pg.K_1:
+                snake2.go()
+
             
             
 pg.quit()
