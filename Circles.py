@@ -28,7 +28,8 @@ window.fill(tan)
 snake1 = Snake(window)
 snake2 = Snake(window)
 
-
+snake2.color = (255,255,255)
+snake2.border_color = (0,0,0)
 
 running = True
 
@@ -39,9 +40,11 @@ while running == True:
     snake1.run()
     snake2.run()
     
+    
     for event in pg.event.get():
         
         if event.type == pg.QUIT:
+            pg.quit()
             running = False
             
         if event.type == pg.MOUSEBUTTONDOWN:
@@ -51,6 +54,8 @@ while running == True:
             if event.key == pg.K_1:
                 snake2.go()
 
+            if event.key == pg.K_c:
+                window.fill(tan)
             
             
 pg.quit()

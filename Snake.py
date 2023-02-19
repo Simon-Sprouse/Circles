@@ -25,12 +25,25 @@ class Snake():
         
     def findPos(self):
         
+        window_width = self.surface.get_width()
+        window_height =self.surface.get_height()
+        
+        dx, dy = 0, 0
+        
         dr = random.randint(0,20)
         theta = random.randint(0,359)
         
         dx = dr * math.cos(theta)
         dy = dr * math.sin(theta)
-        self.pos = (self.pos[0]+dx, self.pos[1]+dy)
+        
+        if (self.pos[0]+dx < 0 
+            or self.pos[1]+dy < 0
+            or self.pos[0]+dx > window_width
+            or self.pos[1]+dy > window_height):
+            
+            self.findPos()
+        else: 
+            self.pos = (self.pos[0]+dx, self.pos[1]+dy)
         
 
         
