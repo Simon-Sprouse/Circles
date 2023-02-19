@@ -46,6 +46,7 @@ while running == True:
             
             
             snake1.run()
+            snake1.find_pos()
             
             
             
